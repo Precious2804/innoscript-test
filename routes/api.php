@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\ForceJsonResponse;
 use Illuminate\Http\Request;
@@ -24,6 +25,11 @@ Route::middleware([ForceJsonResponse::class])->group(function () {
             Route::get('info', [UserController::class, 'info']);
             Route::post('logout', [UserController::class, 'logout']);
             Route::post('update-password', [UserController::class, 'updatePassword']);
+        });
+
+        Route::group(['prefix' => 'article'], function () {
+            Route::get('index', [ArticleController::class, 'index']);
+            Route::get('show/{article}', [ArticleController::class, 'show']);
         });
     });
 });
