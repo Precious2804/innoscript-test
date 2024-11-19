@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ChangePasswordRequest;
 use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests\LoginRequest;
+use App\Http\Requests\SetPreferenceRequest;
+use App\Http\Resources\UserPreferenceResource;
 use App\Http\Resources\UserResource;
 use App\Services\UserService;
 use App\Traits\ApiResponse;
@@ -27,7 +29,7 @@ class UserController extends Controller
     {
         $data = $request->validated();
         $user = $this->userService->createUser($data);
-        return ApiResponse::successResponseWithData(new UserResource($user), 'New account created successfully', Response::HTTP_OK);
+        return ApiResponse::successResponseWithData(new UserResource($user), 'New account created successfully', Response::HTTP_CREATED);
     }
 
     public function login(LoginRequest $request)
@@ -58,5 +60,17 @@ class UserController extends Controller
         $data = $request->validated();
         $this->userService->updatePassword(Auth::user()->id, $data);
         return ApiResponse::successResponse('Password Updated', Response::HTTP_OK);
+    }
+
+    public function setPreferences(SetPreferenceRequest $request)
+    {
+        $data = $request->validated();
+        $this->userService->setPreferences(Auth::user()->id, $data);
+        return ApiResponse::successResponse('Update was Successful', Response::HTTP_OK);
+    }
+
+    public function getPreferences(){
+        $preferences = $this->userService->getPreferences(Auth::user()->id);
+        return ApiResponse::successResponseWithData(UserPreferenceResource::collection($preferences), 'User Preferences Retrieved', Response::HTTP_OK);
     }
 }

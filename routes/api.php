@@ -25,6 +25,8 @@ Route::middleware([ForceJsonResponse::class])->group(function () {
             Route::get('info', [UserController::class, 'info']);
             Route::post('logout', [UserController::class, 'logout']);
             Route::post('update-password', [UserController::class, 'updatePassword']);
+            Route::post('set-preferences', [UserController::class, 'setPreferences']);
+            Route::get('get-preferences', [UserController::class, 'getPreferences']);
         });
 
         Route::group(['prefix' => 'article'], function () {

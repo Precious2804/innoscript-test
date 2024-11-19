@@ -46,4 +46,17 @@ class UserService
     {
         return $this->userRepository->findByID($userId);
     }
+
+    public function setPreferences($userId, $data)
+    {
+        foreach ($data['preferences'] as $item) {
+            $this->userRepository->setPreference($userId, $item);
+        }
+        return $userId;
+    }
+
+    public function getPreferences($userId)
+    {
+        return $this->userRepository->getPreferences($userId);
+    }
 }
