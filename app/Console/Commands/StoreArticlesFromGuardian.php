@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Models\Article;
 use App\Traits\ThirdParty;
+use Carbon\Carbon;
 use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;
@@ -34,7 +35,7 @@ class StoreArticlesFromGuardian extends Command
         $this->info('Fetching News Articles from The Guardian...');
 
         try {
-            $url = "https://content.guardianapis.com/search?q=$category AND trending&api-key=".env('GUARDIAN_API_KEY');
+            $url = "https://content.guardianapis.com/search?q=$category AND trending&api-key=" . env('GUARDIAN_API_KEY');
             $articles = $this->fetchNewsArticles($url);
 
             // If status is not returned or status not ok
@@ -58,7 +59,7 @@ class StoreArticlesFromGuardian extends Command
                     'description' => $item->webTitle,
                     'content' => $item->webTitle ?? null,
                     'url' => $item->webUrl,
-                    'publication_date' => $item->webPublicationDate,
+                    'publication_date' => Carbon::parse($item->webPublicationDate)->format('Y-m-d H:i:s'),
                     'category' => $item->pillarName ?? $category,
                     'news_source' => "The Guardian",
                     'api_resource' => "The Guardian",

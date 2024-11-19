@@ -19,7 +19,7 @@ return new class extends Migration
             $table->longText('content')->nullable();
             $table->string('url')->nullable();
             $table->string('image')->nullable();
-            $table->string('publication_date')->nullable();
+            $table->dateTime('publication_date')->nullable();
             $table->string('api_resource')->nullable();
             $table->string('news_source')->nullable();
             $table->string('category')->nullable();

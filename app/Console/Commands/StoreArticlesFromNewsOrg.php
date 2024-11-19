@@ -69,7 +69,7 @@ class StoreArticlesFromNewsOrg extends Command
                     'content' => $item->content ?? $item->title,
                     'image' => $item->urlToImage,
                     'url' => $item->url,
-                    'publication_date' => $item->publishedAt,
+                    'publication_date' => Carbon::parse($item->publishedAt)->format('Y-m-d H:i:s'),
                     'category' => $category,
                     'news_source' => $item->source->name,
                     'api_resource' => "NewsAPI.org",

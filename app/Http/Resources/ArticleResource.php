@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -22,11 +23,11 @@ class ArticleResource extends JsonResource
             'content' => $this->content,
             'url' => $this->url,
             'image' => $this->image,
-            'publication_date' => $this->publication_date,
+            'publication_date' => Carbon::parse($this->publication_date)->format('Y-m-d H:i:s'),
             'api_resource' => $this->api_resource,
             'news_source' => $this->news_source,
             'category' => $this->category,
-            'dateAdded' => $this->created_at,
+            'dateAdded' => Carbon::parse($this->created_at)->format('Y-m-d H:i:s'),
         ];
     }
 }

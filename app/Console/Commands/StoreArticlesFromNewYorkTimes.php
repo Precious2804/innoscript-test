@@ -64,7 +64,7 @@ class StoreArticlesFromNewYorkTimes extends Command
                     'content' => $item->lead_paragraph ?? $item->snippet ?? $item->abstract,
                     'image' => $item->multimedia[0]->url ?? null,
                     'url' => $item->web_url,
-                    'publication_date' => $item->pub_date,
+                    'publication_date' => Carbon::parse($item->pub_date)->format('Y-m-d H:i:s'),
                     'category' => $category,
                     'news_source' => $item->source,
                     'api_resource' => "New York Times",

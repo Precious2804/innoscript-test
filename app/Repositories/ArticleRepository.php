@@ -8,7 +8,7 @@ class ArticleRepository
 {
     public function getAllArticles($data)
     {
-        $articles = Article::orderBy('created_at', 'DESC')->paginate($data['limit'] ?? 10);
+        $articles = Article::filter($data)->orderBy('created_at', 'DESC')->paginate($data['limit'] ?? 10);
         return $articles;
     }
 }
