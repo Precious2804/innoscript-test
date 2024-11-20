@@ -42,20 +42,26 @@ NewsAggregator API - A RESTful API for a news aggregator service that pulls arti
 ### **Running Locally**
 
 1. Clone the repository:
+   ```bash
    git clone https://github.com/Precious2804/innoscripta-test-precious.git
    cd innoscripta-test-precious
 
 2. Install Composer Dependencies
+   ```bash
    composer install
 
 3. Set up .env file
+   ```bash
    cp .env.example .env
 
 4. Generate Application Key
+   ```bash
    php artisan key:generate
 
 5. Run Migrations
+   ```bash
    php artisan migrate
 
 6. Start the local development server
+   ```bash
    php artisan serve
