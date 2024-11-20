@@ -15,7 +15,7 @@ Route::get('done', function () {
     return "okay";
 });
 
-Route::middleware([ForceJsonResponse::class, XssCleanInput::class])->group(function () {
+Route::middleware([ForceJsonResponse::class, XssCleanInput::class, 'throttle:limit-rate'])->group(function () {
     Route::group(['prefix' => 'auth'], function () {
         Route::post('register', [UserController::class, 'register'])->name('auth.register');
         Route::post('login', [UserController::class, 'login'])->name(('auth.login'));
