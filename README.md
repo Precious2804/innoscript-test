@@ -12,9 +12,8 @@ NewsAggregator API - A RESTful API for a news aggregator service that pulls arti
     - [Running Locally](#running-locally)
     - [Running with Docker](#running-via-docker)
 4. [Configuration](#configuration)
-5. [Usage](#usage)
-6. [Testing](#testing)
-9. [Contact](#contact)
+5. [Testing](#testing)
+6. [Contact](#contact)
 
 ---
 
@@ -117,28 +116,50 @@ NewsAggregator API - A RESTful API for a news aggregator service that pulls arti
   - NewsApi.org: to fetch and store articles from NewsAPI.org
     - Run Locally
       ```bash
-      php artisan get:newsorg $category
+      php artisan get:newsorg <category>
     - Run via Docker
       ```bash
-      docker-compose exec app php artisan get:newsorg $category
+      docker-compose exec app php artisan get:newsorg <category>
 
   - The Guardian: to fetch and store articles from The Guardian
     - Run Locally
       ```bash
-      php artisan get:guardian $category
+      php artisan get:guardian <category>
     - Run via Docker
       ```bash
-      docker-compose exec app php artisan get:guardian $category
+      docker-compose exec app php artisan get:guardian <category>
 
   - New York Times: to fetch and store articles from New York Times
     - Run Locally
       ```bash
-      php artisan get:nytimes $category
+      php artisan get:nytimes <category>
     - Run via Docker
       ```bash
-      docker-compose exec app php artisan get:nytimes $category
+      docker-compose exec app php artisan get:nytimes <category>
 
-Note: $category is a dynamic value that could be set, and used for fetch from any of the news resources based on a preferred category. For Example, election, entertainment, business etc
+Note: <category> is a dynamic value that could be set, and used for fetch from any of the news resources based on a preferred category. For Example, election, entertainment, business etc
 
 
+---
+
+
+## **Testing**
+
+- Run Test Locally
+  ```bash
+  php artisan test
+
+- Run Test with Docker
+  ```bash
+  docker-compose exec app php artisan test
+
+
+---
+
+
+## **Contact**
+
+- Email: anipreciousebuka@gmail.com
+- Name: Precious Ani
+  
 
