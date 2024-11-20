@@ -16,23 +16,23 @@ Route::get('done', function () {
 
 Route::middleware([ForceJsonResponse::class])->group(function () {
     Route::group(['prefix' => 'auth'], function () {
-        Route::post('register', [UserController::class, 'register']);
-        Route::post('login', [UserController::class, 'login']);
+        Route::post('register', [UserController::class, 'register'])->name('auth.register');
+        Route::post('login', [UserController::class, 'login'])->name(('auth.login'));
     });
 
     Route::middleware(['auth:sanctum'])->group(function () {
         Route::group(['prefix' => 'user'], function () {
-            Route::get('info', [UserController::class, 'info']);
-            Route::post('logout', [UserController::class, 'logout']);
-            Route::post('update-password', [UserController::class, 'updatePassword']);
-            Route::post('set-preferences', [UserController::class, 'setPreferences']);
-            Route::get('get-preferences', [UserController::class, 'getPreferences']);
+            Route::get('info', [UserController::class, 'info'])->name('user.info');
+            Route::post('logout', [UserController::class, 'logout'])->name('user.logout');
+            Route::put('update-password', [UserController::class, 'updatePassword'])->name('user.updatePassword');
+            Route::put('set-preferences', [UserController::class, 'setPreferences'])->name('user.setPreferences');
+            Route::get('get-preferences', [UserController::class, 'getPreferences'])->name('user.getPreferences');
         });
 
         Route::group(['prefix' => 'article'], function () {
-            Route::get('index', [ArticleController::class, 'index']);
-            Route::get('show/{article}', [ArticleController::class, 'show']);
-            Route::get('preferences', [ArticleController::class, 'preferences']);
+            Route::get('index', [ArticleController::class, 'index'])->name('article.index');
+            Route::get('show/{article}', [ArticleController::class, 'show'])->name('article.show');
+            Route::get('preferences', [ArticleController::class, 'preferences'])->name('article.preferences');
         });
     });
 });

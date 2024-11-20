@@ -27,7 +27,7 @@ class ArticleResource extends JsonResource
             'api_resource' => $this->api_resource,
             'news_source' => $this->news_source,
             'category' => $this->category,
-            'dateAdded' => Carbon::parse($this->created_at)->format('Y-m-d H:i:s'),
+            'created_at' => Carbon::parse($this->created_at)->format('Y-m-d H:i:s'),
         ];
     }
 }
