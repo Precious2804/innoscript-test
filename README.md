@@ -10,12 +10,10 @@ NewsAggregator API - A RESTful API for a news aggregator service that pulls arti
 2. [Technologies Used](#technologies-used)
 3. [Installation](#installation)
     - [Running Locally](#running-locally)
-    - [Running with Docker](#running-with-docker)
+    - [Running with Docker](#running-via-docker)
 4. [Configuration](#configuration)
 5. [Usage](#usage)
 6. [Testing](#testing)
-7. [Contributing](#contributing)
-8. [License](#license)
 9. [Contact](#contact)
 
 ---
@@ -37,7 +35,7 @@ NewsAggregator API - A RESTful API for a news aggregator service that pulls arti
 
 ---
 
-## ** Installation **
+## **Installation**
 
 ### **Running Locally**
 
@@ -101,5 +99,46 @@ NewsAggregator API - A RESTful API for a news aggregator service that pulls arti
 
 
 ---
+
+
+## **Configuration**
+
+- Update .env file with the required settings:
+  - Database credentials: Set up your database on your prefereed MYSQL host, for instance phpMyAdmin, and update the .env file with your database configuration
+
+  - API keys: Add the following attributes to your .env files, useful for aggregating data from 3 news sources. You can retrieve the keys via the email submission for this test
+    ```bash
+    NEWSORG_API_KEY=xxxxxxxxxxxxxxxxxx
+    GUARDIAN_API_KEY=xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx
+    NEW_YORK_TIMES_API_KEY=xxxxxxxxxxxxxxxxxxxxx
+
+- Fetch and Store Date from the 3 News Sources above
+
+  - NewsApi.org: to fetch and store articles from NewsAPI.org
+    - Run Locally
+      ```bash
+      php artisan get:newsorg < category >
+    - Run via Docker
+      ```bash
+      docker-compose exec app php artisan get:newsorg < category >
+
+  - The Guardian: to fetch and store articles from The Guardian
+    - Run Locally
+      ```bash
+      php artisan get:guardian < category >
+    - Run via Docker
+      ```bash
+      docker-compose exec app php artisan get:guardian < category >
+
+  - New York Times: to fetch and store articles from New York Times
+    - Run Locally
+      ```bash
+      php artisan get:nytimes < category >
+    - Run via Docker
+      ```bash
+      docker-compose exec app php artisan get:nytimes < category >
+
+Note: < category > is a dynamic value that could be set, and used for fetch from any of the news resources based on a preferred category. For Example, election, entertainment, business etc
+
 
 
