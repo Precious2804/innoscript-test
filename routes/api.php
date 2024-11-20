@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Middleware\ForceJsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use ProtoneMedia\LaravelXssProtection\Middleware\XssCleanInput;
 
 // Route::get('/user', function (Request $request) {
 //     return $request->user();
@@ -14,7 +15,7 @@ Route::get('done', function () {
     return "okay";
 });
 
-Route::middleware([ForceJsonResponse::class])->group(function () {
+Route::middleware([ForceJsonResponse::class, XssCleanInput::class])->group(function () {
     Route::group(['prefix' => 'auth'], function () {
         Route::post('register', [UserController::class, 'register'])->name('auth.register');
         Route::post('login', [UserController::class, 'login'])->name(('auth.login'));
