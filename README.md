@@ -12,8 +12,9 @@ NewsAggregator API - A RESTful API for a news aggregator service that pulls arti
     - [Running Locally](#running-locally)
     - [Running with Docker](#running-via-docker)
 4. [Configuration](#configuration)
-5. [Testing](#testing)
-6. [Contact](#contact)
+5. [API Documentation](#api-documentation)
+6. [Testing](#testing)
+7. [Contact](#contact)
 
 ---
 
@@ -139,6 +140,14 @@ NewsAggregator API - A RESTful API for a news aggregator service that pulls arti
 
 Note: <category> is a dynamic value that could be set, and used for fetch from any of the news resources based on a preferred category. For Example, election, entertainment, business etc
 
+
+---
+
+
+## **API Documentation**
+
+- Click the below link access the API Documentation
+  https://documenter.getpostman.com/view/15413999/2sAYBRHEyn  
 
 ---
 
