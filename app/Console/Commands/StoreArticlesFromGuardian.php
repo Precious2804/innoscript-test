@@ -38,7 +38,7 @@ class StoreArticlesFromGuardian extends Command
             $url = "https://content.guardianapis.com/search?q=$category AND trending&api-key=" . env('GUARDIAN_API_KEY');
             $articles = $this->fetchNewsArticles($url);
 
-            // If status is not returned or status not ok
+            // If status is not returned or status is not ok
             if (!isset($articles->response->status) || $articles->response->status != "ok") {
                 $this->error("Error Connecting to The Guardian. Try again Later");
                 return;

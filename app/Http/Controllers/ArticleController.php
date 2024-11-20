@@ -8,6 +8,7 @@ use App\Services\ArticleService;
 use App\Traits\ApiResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 
 class ArticleController extends Controller
 {
@@ -30,5 +31,12 @@ class ArticleController extends Controller
     public function show(Article $article)
     {
         return ApiResponse::successResponseWithData(new ArticleResource($article), "Single Article Retrieved", Response::HTTP_OK);
+    }
+
+    public function preferences(Request $request)
+    {
+        $data = $request->all();
+        $getPreferredArticles = $this->articleService->getPreferredArticles($data, Auth::user()->id);
+        return ApiResponse::successResponseWithData(ArticleResource::collection($getPreferredArticles)->response()->getData(), "Articles for User Preferences", Response::HTTP_OK);
     }
 }

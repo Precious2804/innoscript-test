@@ -41,7 +41,7 @@ class StoreArticlesFromNewYorkTimes extends Command
             $url = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=$category&begin_date=$today&end_date=$today&api-key=" . env('NEW_YORK_TIMES_API_KEY');
             $articles = $this->fetchNewsArticles($url);
 
-            // If status is not returned or status not ok
+            // If status is not returned or status is not ok
             if (!isset($articles->status) || $articles->status != "OK") {
                 $this->error("Error Connecting to New York Times. Try again Later");
                 return;

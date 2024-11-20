@@ -32,6 +32,7 @@ Route::middleware([ForceJsonResponse::class])->group(function () {
         Route::group(['prefix' => 'article'], function () {
             Route::get('index', [ArticleController::class, 'index']);
             Route::get('show/{article}', [ArticleController::class, 'show']);
+            Route::get('preferences', [ArticleController::class, 'preferences']);
         });
     });
 });

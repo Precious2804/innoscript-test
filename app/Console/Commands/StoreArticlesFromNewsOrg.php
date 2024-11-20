@@ -44,7 +44,7 @@ class StoreArticlesFromNewsOrg extends Command
             $url = "https://newsapi.org/v2/everything?q=$category&from=$yesterday&to=$today&pageSize=10&sortBy=popularity&apiKey=" . env('NEWSORG_API_KEY');
             $articles = $this->fetchNewsArticles($url);
 
-            // If status is not returned or status not ok
+            // If status is not returned or status is not ok
             if (!isset($articles->status) || $articles->status != "ok") {
                 $this->error("Error Connecting to NewsAPI.org. Try again Later");
                 return;
