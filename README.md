@@ -40,154 +40,205 @@ NewsAggregator API - A RESTful API for a news aggregator service that pulls arti
 ### **Running via Docker**
 
 1. Clone the repository:
-   ```bash
-   git clone https://github.com/Precious2804/innoscripta-test-precious.git
-   cd innoscripta-test-precious
+
+    ```bash
+    git clone https://github.com/Precious2804/innoscripta-test-precious.git
+    cd innoscripta-test-precious
+
+    ```
 
 2. Set up .env file
-   ```bash
-   cp .env.example .env
+
+    ```bash
+    cp .env.example .env
+
+    ```
 
 3. Update environment variables to match Docker configurations for Database Setup:
-   ```bash
-   DB_CONNECTION=mysql
-   DB_HOST=host.docker.internal
-   DB_PORT=3306
-   DB_DATABASE=db_name
-   DB_USERNAME=db_user
-   DB_PASSWORD=db_pass 
+
+    ```bash
+    DB_CONNECTION=mysql
+    DB_HOST=host.docker.internal
+    DB_PORT=3306
+    DB_DATABASE=db_name
+    DB_USERNAME=db_user
+    DB_PASSWORD=db_pass
+
+    ```
 
 4. Generate Application Key
-   ```bash
-   php artisan key:generate
 
-5. Build and run the Docker containers:
-   ```bash
-   docker-compose up --build
+    ```bash
+    php artisan key:generate
+
+    ```
+
+5. Build the Docker containers:
+
+    ```bash
+    docker-compose build
+
+    ```
 
 6. Access the Application Container (Run Commands Inside the Container)
-   ```bash
-   docker-compose exec app bash   
+
+    ```bash
+    docker-compose exec app bash
+
+    ```
 
 7. Run migrations inside the Docker container
-   ```bash
-   php artisan migrate
 
+    ```bash
+    php artisan migrate
 
-8. Access the application at http://localhost:8000
+    ```
 
+8. In another terminal, Run the Docker containers:
+
+    ```bash
+    docker-compose up -d
+
+    ```
+
+9. Access the application at http://localhost:8000
 
 ### **Running Locally**
 
 1. Clone the repository:
-   ```bash
-   git clone https://github.com/Precious2804/innoscripta-test-precious.git
-   cd innoscripta-test-precious
+
+    ```bash
+    git clone https://github.com/Precious2804/innoscripta-test-precious.git
+    cd innoscripta-test-precious
+
+    ```
 
 2. Install Composer Dependencies
-   ```bash
-   composer install
+
+    ```bash
+    composer install
+
+    ```
 
 3. Set up .env file
-   ```bash
-   cp .env.example .env
+
+    ```bash
+    cp .env.example .env
+
+    ```
 
 4. Replace the Database configurations with something like this
-   ```bash
-   DB_CONNECTION=mysql
-   DB_HOST=127.0.0.1
-   DB_PORT=3306
-   DB_DATABASE=db_name
-   DB_USERNAME=db_user
-   DB_PASSWORD=db_pass 
+
+    ```bash
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    DB_DATABASE=db_name
+    DB_USERNAME=db_user
+    DB_PASSWORD=db_pass
+
+    ```
 
 5. Generate Application Key
-   ```bash
-   php artisan key:generate
+
+    ```bash
+    php artisan key:generate
+
+    ```
 
 6. Run Migrations
-   ```bash
-   php artisan migrate
+
+    ```bash
+    php artisan migrate
+
+    ```
 
 7. Start the local development server
-   ```bash
-   php artisan serve
 
-8. Access the application at http://localhost:8000 
+    ```bash
+    php artisan serve
 
+    ```
+
+8. Access the application at http://localhost:8000
 
 ---
-
 
 ## **Configuration**
 
-- Update .env file with the required settings:
-  - Database credentials: Set up your database on your prefereed MYSQL host, for instance phpMyAdmin, and update the .env file with your database configuration
+-   Update .env file with the required settings:
 
-  - API keys: Add the following attributes to your .env files, useful for aggregating data from 3 news sources. You can retrieve the keys via the email submission for this test
-    ```bash
-    NEWSORG_API_KEY=xxxxxxxxxxxxxxxxxx
-    GUARDIAN_API_KEY=xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx
-    NEW_YORK_TIMES_API_KEY=xxxxxxxxxxxxxxxxxxxxx
+    -   Database credentials: Set up your database on your prefereed MYSQL host, for instance phpMyAdmin, and update the .env file with your database configuration
 
-- Fetch and Store Date from the 3 News Sources above
+    -   API keys: Add the following attributes to your .env files, useful for aggregating data from 3 news sources. You can retrieve the keys via the email submission for this test
+        ```bash
+        NEWSORG_API_KEY=xxxxxxxxxxxxxxxxxx
+        GUARDIAN_API_KEY=xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx
+        NEW_YORK_TIMES_API_KEY=xxxxxxxxxxxxxxxxxxxxx
+        ```
 
-  - NewsApi.org: to fetch and store articles from NewsAPI.org
-    - Run via Docker
-      ```bash
-      docker-compose exec app php artisan get:newsorg <category>  
-    - Run Locally
-      ```bash
-      php artisan get:newsorg <category>
+-   Fetch and Store Date from the 3 News Sources above
 
-  - The Guardian: to fetch and store articles from The Guardian
-    - Run via Docker
-      ```bash
-      docker-compose exec app php artisan get:guardian <category>
-    - Run Locally
-      ```bash
-      php artisan get:guardian <category>
+    -   NewsApi.org: to fetch and store articles from NewsAPI.org
 
+        -   Run via Docker
+            ```bash
+            docker-compose exec app php artisan get:newsorg <category>
+            ```
+        -   Run Locally
+            ```bash
+            php artisan get:newsorg <category>
+            ```
 
-  - New York Times: to fetch and store articles from New York Times
-    - Run via Docker
-      ```bash
-      docker-compose exec app php artisan get:nytimes <category>
-    - Run Locally
-      ```bash
-      php artisan get:nytimes <category>
+    -   The Guardian: to fetch and store articles from The Guardian
 
+        -   Run via Docker
+            ```bash
+            docker-compose exec app php artisan get:guardian <category>
+            ```
+        -   Run Locally
+            ```bash
+            php artisan get:guardian <category>
+            ```
+
+    -   New York Times: to fetch and store articles from New York Times
+        -   Run via Docker
+            ```bash
+            docker-compose exec app php artisan get:nytimes <category>
+            ```
+        -   Run Locally
+            ```bash
+            php artisan get:nytimes <category>
+            ```
 
 Note: <category> is a dynamic value that could be set, and used for fetch from any of the news resources based on a preferred category. For Example, election, entertainment, business etc
 
-
 ---
-
 
 ## **API Documentation**
 
-- Click the below link access the API Documentation
-  https://documenter.getpostman.com/view/15413999/2sAYBRHEyn  
+-   Click the below link access the API Documentation
+    https://documenter.getpostman.com/view/15413999/2sAYBRHEyn
 
 ---
-
 
 ## **Testing**
 
-- Run Test with Docker
-  ```bash
-  docker-compose exec app php artisan test
+-   Run Test with Docker
 
-- Run Test Locally
-  ```bash
-  php artisan test  
+    ```bash
+    docker-compose exec app php artisan test
+
+    ```
+
+-   Run Test Locally
+    ```bash
+    php artisan test
+    ```
 
 ---
 
-
 ## **Contact**
 
-- Email: anipreciousebuka@gmail.com
-- Name: Precious Ani
-  
-
+-   Email: anipreciousebuka@gmail.com
+-   Name: Precious Ani
