@@ -52,19 +52,28 @@ NewsAggregator API - A RESTful API for a news aggregator service that pulls arti
    ```bash
    cp .env.example .env
 
-4. Generate Application Key
+4. Replace the Database configurations with something like this
+   ```bash
+   DB_CONNECTION=mysql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_DATABASE=db_name
+   DB_USERNAME=db_user
+   DB_PASSWORD=db_pass 
+
+5. Generate Application Key
    ```bash
    php artisan key:generate
 
-5. Run Migrations
+6. Run Migrations
    ```bash
    php artisan migrate
 
-6. Start the local development server
+7. Start the local development server
    ```bash
    php artisan serve
 
-7. Access the application at http://localhost:8000 
+8. Access the application at http://localhost:8000 
 
 
 ### **Running via Docker**
@@ -78,7 +87,7 @@ NewsAggregator API - A RESTful API for a news aggregator service that pulls arti
    ```bash
    cp .env.example .env
 
-3. Update environment variables to match Docker configurations:
+3. Update environment variables to match Docker configurations for Database Setup:
    ```bash
    DB_CONNECTION=mysql
    DB_HOST=host.docker.internal
@@ -87,15 +96,19 @@ NewsAggregator API - A RESTful API for a news aggregator service that pulls arti
    DB_USERNAME=db_user
    DB_PASSWORD=db_pass 
 
-4. Build and run the Docker containers:
+4. Generate Application Key
+   ```bash
+   php artisan key:generate
+
+5. Build and run the Docker containers:
    ```bash
    docker-compose up --build
 
-5. Run migrations inside the Docker container
+6. Run migrations inside the Docker container
    ```bash
    docker-compose exec app php artisan migrate --seed
 
-6. Access the application at http://localhost:8000 
+7. Access the application at http://localhost:8000 
 
 
 ---
