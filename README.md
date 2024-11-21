@@ -179,7 +179,7 @@ NewsAggregator API - A RESTful API for a news aggregator service that pulls arti
 
 -   Fetch and Store Date from the 3 News Sources above
 
-    -   NewsApi.org: to fetch and store articles from NewsAPI.org
+    -   **NewsApi.org**: to fetch and store articles from NewsAPI.org
 
         -   Run via Docker
             ```bash
@@ -190,7 +190,7 @@ NewsAggregator API - A RESTful API for a news aggregator service that pulls arti
             php artisan get:newsorg <category>
             ```
 
-    -   The Guardian: to fetch and store articles from The Guardian
+    -   **The Guardian**: to fetch and store articles from The Guardian
 
         -   Run via Docker
             ```bash
@@ -201,7 +201,7 @@ NewsAggregator API - A RESTful API for a news aggregator service that pulls arti
             php artisan get:guardian <category>
             ```
 
-    -   New York Times: to fetch and store articles from New York Times
+    -   **New York Times**: to fetch and store articles from New York Times
         -   Run via Docker
             ```bash
             docker-compose exec app php artisan get:nytimes <category>
