@@ -9,8 +9,8 @@ NewsAggregator API - A RESTful API for a news aggregator service that pulls arti
 1. [Features](#features)
 2. [Technologies Used](#technologies-used)
 3. [Installation](#installation)
-    - [Running Locally](#running-locally)
     - [Running with Docker](#running-via-docker)
+    - [Running Locally](#running-locally)
 4. [Configuration](#configuration)
 5. [API Documentation](#api-documentation)
 6. [Testing](#testing)
@@ -36,6 +36,41 @@ NewsAggregator API - A RESTful API for a news aggregator service that pulls arti
 ---
 
 ## **Installation**
+
+### **Running via Docker**
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Precious2804/innoscripta-test-precious.git
+   cd innoscripta-test-precious
+
+2. Set up .env file
+   ```bash
+   cp .env.example .env
+
+3. Update environment variables to match Docker configurations for Database Setup:
+   ```bash
+   DB_CONNECTION=mysql
+   DB_HOST=host.docker.internal
+   DB_PORT=3306
+   DB_DATABASE=db_name
+   DB_USERNAME=db_user
+   DB_PASSWORD=db_pass 
+
+4. Generate Application Key
+   ```bash
+   php artisan key:generate
+
+5. Build and run the Docker containers:
+   ```bash
+   docker-compose up --build
+
+6. Run migrations inside the Docker container
+   ```bash
+   docker-compose exec app php artisan migrate --seed
+
+7. Access the application at http://localhost:8000
+
 
 ### **Running Locally**
 
@@ -74,41 +109,6 @@ NewsAggregator API - A RESTful API for a news aggregator service that pulls arti
    php artisan serve
 
 8. Access the application at http://localhost:8000 
-
-
-### **Running via Docker**
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/Precious2804/innoscripta-test-precious.git
-   cd innoscripta-test-precious
-
-2. Set up .env file
-   ```bash
-   cp .env.example .env
-
-3. Update environment variables to match Docker configurations for Database Setup:
-   ```bash
-   DB_CONNECTION=mysql
-   DB_HOST=host.docker.internal
-   DB_PORT=3306
-   DB_DATABASE=db_name
-   DB_USERNAME=db_user
-   DB_PASSWORD=db_pass 
-
-4. Generate Application Key
-   ```bash
-   php artisan key:generate
-
-5. Build and run the Docker containers:
-   ```bash
-   docker-compose up --build
-
-6. Run migrations inside the Docker container
-   ```bash
-   docker-compose exec app php artisan migrate --seed
-
-7. Access the application at http://localhost:8000 
 
 
 ---
