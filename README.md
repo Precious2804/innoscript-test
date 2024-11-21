@@ -65,11 +65,16 @@ NewsAggregator API - A RESTful API for a news aggregator service that pulls arti
    ```bash
    docker-compose up --build
 
-6. Run migrations inside the Docker container
+6. Access the Application Container (Run Commands Inside the Container)
    ```bash
-   docker-compose exec app php artisan migrate --seed
+   docker-compose exec app bash   
 
-7. Access the application at http://localhost:8000
+7. Run migrations inside the Docker container
+   ```bash
+   php artisan migrate
+
+
+8. Access the application at http://localhost:8000
 
 
 ### **Running Locally**
@@ -128,28 +133,30 @@ NewsAggregator API - A RESTful API for a news aggregator service that pulls arti
 - Fetch and Store Date from the 3 News Sources above
 
   - NewsApi.org: to fetch and store articles from NewsAPI.org
+    - Run via Docker
+      ```bash
+      docker-compose exec app php artisan get:newsorg <category>  
     - Run Locally
       ```bash
       php artisan get:newsorg <category>
-    - Run via Docker
-      ```bash
-      docker-compose exec app php artisan get:newsorg <category>
 
   - The Guardian: to fetch and store articles from The Guardian
-    - Run Locally
-      ```bash
-      php artisan get:guardian <category>
     - Run via Docker
       ```bash
       docker-compose exec app php artisan get:guardian <category>
-
-  - New York Times: to fetch and store articles from New York Times
     - Run Locally
       ```bash
-      php artisan get:nytimes <category>
+      php artisan get:guardian <category>
+
+
+  - New York Times: to fetch and store articles from New York Times
     - Run via Docker
       ```bash
       docker-compose exec app php artisan get:nytimes <category>
+    - Run Locally
+      ```bash
+      php artisan get:nytimes <category>
+
 
 Note: <category> is a dynamic value that could be set, and used for fetch from any of the news resources based on a preferred category. For Example, election, entertainment, business etc
 
@@ -167,14 +174,13 @@ Note: <category> is a dynamic value that could be set, and used for fetch from a
 
 ## **Testing**
 
-- Run Test Locally
-  ```bash
-  php artisan test
-
 - Run Test with Docker
   ```bash
   docker-compose exec app php artisan test
 
+- Run Test Locally
+  ```bash
+  php artisan test  
 
 ---
 
